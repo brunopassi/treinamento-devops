@@ -98,7 +98,7 @@ resource "aws_instance" "web" {
 
 output "subnet" {
 #    value = [var.subnet,aws_instance.web.public_dns,aws_instance.web.key_name,aws_instance.web.vpc.vpc_id]
-    value = [var.subnet,aws_instance.web.public_dns,aws_instance.web.key_name]
+    value = [aws_instance.web.public_dns,aws_instance.web.key_name]
 }
 #output "instance_public_dns" {
 #  value = [aws_instance.web.public_dns]
