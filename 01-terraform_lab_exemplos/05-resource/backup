@@ -73,34 +73,28 @@ provider "aws" {
   region = "sa-east-1"
 }
 resource "aws_instance" "web" {
-#  count = 5
-#  subnet_id     = "subnet-0ca605505ccbe9a15"
-  subnet_id = var.subnet
-#  ami = "ami-038dd9dbfff5a5ca5"
-   ami = var.ami
-#  instance_type = "t2.micro"
- instance_type = var.type
+ # for_each = toset(["tester1","tester2"]) 
+  count = 5
+  subnet_id     = "subnet-0ca605505ccbe9a15"
+  ami= "ami-038dd9dbfff5a5ca5"
+  instance_type = "t2.micro"
   associate_public_ip_address = true
- # vpc_security_group_ids = ["sg-038286d06a069a3a7"]
- #vpc_security_group_ids = [var.sg]
- vpc_security_group_ids = ["${aws_security_group.sg05-bruno.id}"]
-
+  vpc_security_group_ids = ["sg-038286d06a069a3a7"]
   key_name = "chavecurso-bruno"
   root_block_device {
     encrypted = true
     volume_size = 40
   }
   tags = {
-    Name = "ec2b-bruno-tf-tester2"
+    Name = "ec2b-bruno-dev${count.index}"
+  #   Name = "ec2b-bruno-tf${each.key}"
+  #   Name = "ec2b-bruno-tf-tester1"
   }
 }
-
-output "subnet" {
-#    value = [var.subnet,aws_instance.web.public_dns,aws_instance.web.key_name,aws_instance.web.vpc.vpc_id]
-    value = [var.subnet,aws_instance.web.public_dns,aws_instance.web.key_name]
+output "instance_public_dns" {
+  for item = aws_instance.web
+  value = item.public_dns  
+  #value = [aws_instance.web.public_dns]
+  description = "Mostra os dns publicos da maquina criada."
 }
-#output "instance_public_dns" {
-#  value = [aws_instance.web.public_dns]
-#  description = "Mostra os dns publicos da maquina criada."
-#}
 # /////
