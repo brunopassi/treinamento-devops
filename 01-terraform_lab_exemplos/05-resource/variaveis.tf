@@ -8,15 +8,15 @@ variable "subnet" {
   }
 }
 
-#variable "sg" {
-#  type        = string
-#  description = "O securiy group para ser usado no servidor."
+variable "sg" {
+  type        = string
+  description = "O securiy group para ser usado no servidor."
 
- # validation {
- #   condition     = substr(var.sg, 0, 3) == "sg-"
- #   error_message = "O nome do sg não é válido, tem que começar com \"sg-\"."
- # }
-#}
+  validation {
+    condition     = substr(var.sg, 0, 3) == "sg-"
+    error_message = "O nome do sg não é válido, tem que começar com \"sg-\"."
+  }
+}
 
 variable "ami" {
   type        = string

@@ -82,8 +82,8 @@ resource "aws_instance" "web" {
  instance_type = var.type
   associate_public_ip_address = true
  # vpc_security_group_ids = ["sg-038286d06a069a3a7"]
- #vpc_security_group_ids = [var.sg]
- vpc_security_group_ids = ["${aws_security_group.sg05-bruno.id}"]
+ vpc_security_group_ids = [var.sg]
+ #vpc_security_group_ids = ["${aws_security_group.sg05-bruno.id}"]
 
   key_name = "chavecurso-bruno"
   root_block_device {
