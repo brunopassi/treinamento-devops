@@ -1,0 +1,13 @@
+- hosts: all
+  tasks:
+    - name: "instalando o nginx"
+      become: true
+      shell: "apt update -y"
+      shell: "apt install nginx -y"
+  
+     #    - name: "trocando nome da máquina"
+#      shell: "sudo hostname ec2-bruno-tf"
+#      shell: "sudo echo 'ec2-bruno-tf' > /etc/hostname"
+#      shell: "sudo bash"
+
+   

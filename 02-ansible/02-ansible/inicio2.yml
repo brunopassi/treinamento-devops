@@ -1,0 +1,20 @@
+- hosts: all
+  tasks:
+    - name: "Roda: sudo apt update"
+      become: yes
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #Um dia
+    
+    - name: "Instala pacotes em lote"
+      become: yes # roda com sudo
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - nginx
+        - unzip
+        - mysql-server
+        - maven 
+   
