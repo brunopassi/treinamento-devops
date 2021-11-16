@@ -1,10 +1,5 @@
 - hosts: all
-  handlers:
-    - name: "restart apache"
-      service:
-        name: apache2
-        state: restarted
-      become: yes
+  
   tasks:
     #### com estado
     # - name: "Criando um arquivo a toa no servidor"
@@ -67,9 +62,6 @@
          login_password: root
          state: present
 
-    - shell: cat /var/www/wordpress/wp-config.php
-      register: ps
-    - debug:
-        msg: " '{{ ps.stdout_lines }}' "
+  
 
     
