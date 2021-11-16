@@ -90,7 +90,7 @@ resource "aws_instance" "web" {
   associate_public_ip_address = true
  # vpc_security_group_ids = ["sg-038286d06a069a3a7"]
  #vpc_security_group_ids = [var.sg]
- vpc_security_group_ids = ["${aws_security_group.sgtf-bruno}"]
+ vpc_security_group_ids = ["${aws_security_group.sgtf-bruno.id}"]
 
   #key_name = "chavecurso-bruno"
   #key_name = aws_key_pair.chave_key.key_name
