@@ -1,0 +1,6 @@
+typem = "t3.medium"
+typew = "t2.large"
+#sg = "sg-038286d06a069a3a7"
+subneta = "subnet-0ca605505ccbe9a15"
+subnetc = "subnet-017483a5def853c5b"
+ami = "ami-0e3dee49abff9643c"
