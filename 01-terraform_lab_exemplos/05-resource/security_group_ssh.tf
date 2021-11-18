@@ -4,8 +4,8 @@
 # ingress = [  # inbound
 # egress = [ # outbound
 
-resource "aws_security_group" "sg05-bruno" {
-  name        = "sg05-bruno"
+resource "aws_security_group" "sgtf-bruno" {
+  name        = "sgtf-bruno"
   description = "Allow SSH inbound traffic"
   vpc_id = "vpc-0cf4d7b46e0632b5f"
 
@@ -22,9 +22,31 @@ resource "aws_security_group" "sg05-bruno" {
       self            = null
     },
      {
-      description      = "SSH from VPC"
+      description      = "acesso http"
       from_port        = 80
       to_port          = 80
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids = null,
+      security_groups = null,
+      self            = null
+    },
+     {
+      description      = "acesso local host"
+      from_port        = 8080
+      to_port          = 8080
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids = null,
+      security_groups = null,
+      self            = null
+    },
+    {
+      description      = "acesso mysql"
+      from_port        = 3306
+      to_port          = 3306
       protocol         = "tcp"
       cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
@@ -49,6 +71,6 @@ resource "aws_security_group" "sg05-bruno" {
   ]
 
   tags = {
-    Name = "sg05-bruno"
+    Name = "sgtf-bruno"
   }
 }

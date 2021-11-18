@@ -21,6 +21,28 @@ resource "aws_security_group" "sgk8s-bruno-master" {
       security_groups = null,
       self            = null
     },
+    {
+      description      = "node js"
+      from_port        = 8080
+      to_port          = 8080
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids = null,
+      security_groups = null,
+      self            = null
+    },
+    {
+      description      = "node js"
+      from_port        = 30000
+      to_port          = 30000
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids = null,
+      security_groups = null,
+      self            = null
+    },
      {
       
       cidr_blocks      = []

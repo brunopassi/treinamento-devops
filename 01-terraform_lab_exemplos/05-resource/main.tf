@@ -73,10 +73,10 @@ provider "aws" {
   region = "sa-east-1"
 }
 
-resource "aws_key_pair" "chave_key" {
-  key_name   = "chave-bruno-tf"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDVbL6G/f//kpMZ8Fc8zaQ8GbittYD1JnLt6crjpdc6C8TtC2AzAp4TukCK1j1+No+Fnj9YPXVQyGNgIWGb4X08GiTt8Uj9iWXb8xg+ksPV8cemVOF5uib2e30m560IpST0OVn7R8ck/nOfOmWsoRgBdu9qSle4tgK/0kbg5je/keXrqtw8yY4i5YKwBo+Cbvh8io79HPegfUAZtEJ8JLjsJ34Jp0fqpqLJYWPyZLjzyrSqMAyWMW4qXzEydkOpQrar9VZ8FYuE92f68xUNLhMh1QGcTTG3IV4AUxM8GkpjpiSUeaR4548fvVDEKIajxvvZGyHLi1E9bfDnPyDhfKBejaxGwp2NIS3aFHC8fPQcFuG8VvcmEmAb2JMXr1JYXJr7POWHtJHmyNqR/D2v+y9ZlHs0qHwxFe1yPzUTS239yn9WT+mOA8l9qeQV+w2s7ND4VJ4dENPB5CAQSix9YbiJbKGioOeL6IzKBVbetgNJj6Mn2N8N2MxPC8J9ZASYYu8= ubuntu@ip-10-50-10-119"
-}
+#resource "aws_key_pair" "chave_key" {
+#  key_name   = "chave-bruno-tf"
+#  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDVbL6G/f//kpMZ8Fc8zaQ8GbittYD1JnLt6crjpdc6C8TtC2AzAp4TukCK1j1+No+Fnj9YPXVQyGNgIWGb4X08GiTt8Uj9iWXb8xg+ksPV8cemVOF5uib2e30m560IpST0OVn7R8ck/nOfOmWsoRgBdu9qSle4tgK/0kbg5je/keXrqtw8yY4i5YKwBo+Cbvh8io79HPegfUAZtEJ8JLjsJ34Jp0fqpqLJYWPyZLjzyrSqMAyWMW4qXzEydkOpQrar9VZ8FYuE92f68xUNLhMh1QGcTTG3IV4AUxM8GkpjpiSUeaR4548fvVDEKIajxvvZGyHLi1E9bfDnPyDhfKBejaxGwp2NIS3aFHC8fPQcFuG8VvcmEmAb2JMXr1JYXJr7POWHtJHmyNqR/D2v+y9ZlHs0qHwxFe1yPzUTS239yn9WT+mOA8l9qeQV+w2s7ND4VJ4dENPB5CAQSix9YbiJbKGioOeL6IzKBVbetgNJj6Mn2N8N2MxPC8J9ZASYYu8= ubuntu@ip-10-50-10-119"
+#}
 
 
 resource "aws_instance" "web" {
@@ -89,12 +89,12 @@ resource "aws_instance" "web" {
  instance_type = var.type
   associate_public_ip_address = true
  # vpc_security_group_ids = ["sg-038286d06a069a3a7"]
- vpc_security_group_ids = [var.sg]
- #vpc_security_group_ids = ["${aws_security_group.sg05-bruno.id}"]
+ #vpc_security_group_ids = [var.sg]
+ vpc_security_group_ids = ["${aws_security_group.sgtf-bruno.id}"]
 
   #key_name = "chavecurso-bruno"
-  key_name = aws_key_pair.chave_key.key_name
-  #key_name = "chave-bruno-tf"
+  #key_name = aws_key_pair.chave_key.key_name
+  key_name = "chave-bruno-tf"
   root_block_device {
     encrypted = true
     volume_size = 40
