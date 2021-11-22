@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "sa-east-1"
 }
 
 data "http" "myip" {
@@ -7,11 +7,22 @@ data "http" "myip" {
 }
 
 resource "aws_instance" "dev_img_deploy_jenkins" {
-  ami           = "ami-09e67e426f25ce0d7"
-  instance_type = "t2.micro"
-  key_name      = "chave-jenkins"
+  
+  ami           = "ami-0e3dee49abff9643c"
+  instance_type = "t3.medium"
+  #key_name      = "treinamento-turma1_itau"
+  subnet_id                   = "subnet-0ca605505ccbe9a15"
+  key_name                    = "chave-bruno-tf"
+  associate_public_ip_address = true
+  root_block_device {
+    encrypted   = true
+    volume_size = 40
+  }
+
+
+
   tags = {
-    Name = "dev_img_deploy_jenkins"
+    Name = "bruno_dev_img_deploy_jenkins"
   }
   vpc_security_group_ids = [aws_security_group.acesso_jenkins_dev_img.id]
 }
@@ -19,6 +30,7 @@ resource "aws_instance" "dev_img_deploy_jenkins" {
 resource "aws_security_group" "acesso_jenkins_dev_img" {
   name        = "acesso_jenkins_dev_img"
   description = "acesso_jenkins_dev_img inbound traffic"
+  vpc_id      = "vpc-0cf4d7b46e0632b5f"
 
   ingress = [
     {

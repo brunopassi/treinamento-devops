@@ -43,20 +43,20 @@ resource "aws_security_group" "sgk8s-bruno-master" {
       self             = true
       to_port          = 0
     },
-    #  {
+     {
       
-    #   cidr_blocks      = []
-    #   description      = "libera sg do workers"
-    #   from_port        = 0
-    #   ipv6_cidr_blocks = []
-    #   prefix_list_ids  = []
-    #   protocol         = "-1"
-    #   security_groups  = [
-    #     "sg-0e2c34e2187c1662a",
-    #   ]
-    #   self             = false
-    #   to_port          = 0
-    # },
+      cidr_blocks      = []
+      description      = "libera sg do workers"
+      from_port        = 0
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "-1"
+      security_groups  = [
+        "sg-0d161fe89ba001177",
+      ]
+      self             = false
+      to_port          = 0
+    },
     {
       
       cidr_blocks      = []
@@ -70,6 +70,19 @@ resource "aws_security_group" "sgk8s-bruno-master" {
       ]
       self             = false
       to_port          = 0
+    },
+    {
+      cidr_blocks      = [
+        "0.0.0.0/0",
+      ]
+      description      = ""
+      from_port        = 0
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "tcp"
+      security_groups  = []
+      self             = false
+      to_port          = 65535
     },
     
   ]
@@ -112,17 +125,6 @@ resource "aws_security_group" "sgk8s-bruno-haproxy" {
     },
     {
       cidr_blocks      = []
-      description      = "Libera acesso k8s_haproxy"
-      from_port        = 0
-      ipv6_cidr_blocks = []
-      prefix_list_ids  = []
-      protocol         = "-1"
-      security_groups  = []
-      self             = true
-      to_port          = 0
-    },
-    {
-      cidr_blocks      = []
       description      = ""
       from_port        = 0
       ipv6_cidr_blocks = []
@@ -132,34 +134,34 @@ resource "aws_security_group" "sgk8s-bruno-haproxy" {
       self             = true
       to_port          = 65535
     },
-    #  {
+     {
       
-    #   cidr_blocks      = []
-    #   description      = "libera sg do workers"
-    #   from_port        = 0
-    #   ipv6_cidr_blocks = []
-    #   prefix_list_ids  = []
-    #   protocol         = "-1"
-    #   security_groups  = [
-    #     "sg-0e2c34e2187c1662a",
-    #   ]
-    #   self             = false
-    #   to_port          = 0
-    # },
-    # {
+      cidr_blocks      = []
+      description      = "libera sg do workers"
+      from_port        = 0
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "-1"
+      security_groups  = [
+        "sg-0d161fe89ba001177",
+      ]
+      self             = false
+      to_port          = 0
+    },
+    {
       
-    #   cidr_blocks      = []
-    #   description      = "libera sg do master"
-    #   from_port        = 0
-    #   ipv6_cidr_blocks = []
-    #   prefix_list_ids  = []
-    #   protocol         = "-1"
-    #   security_groups  = [
-    #     "sg-084144036e4a50826",
-    #   ]
-    #   self             = false
-    #   to_port          = 0
-    # },
+      cidr_blocks      = []
+      description      = "libera sg do master"
+      from_port        = 0
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "-1"
+      security_groups  = [
+        "sg-0bdee28cfe6210bec",
+      ]
+      self             = false
+      to_port          = 0
+    },
     
   ]
 
@@ -214,22 +216,33 @@ resource "aws_security_group" "sgk8s-bruno-workers" {
       self             = false
       to_port          = 0
     },
-    # {
+    {
       
-    #   cidr_blocks      = []
-    #   description      = "amarrando sg do haproxy"
-    #   from_port        = 0
-    #   ipv6_cidr_blocks = []
-    #   prefix_list_ids  = []
-    #   protocol         = "-1"
-    #   security_groups  = [
+      cidr_blocks      = []
+      description      = "amarrando sg do haproxy"
+      from_port        = 0
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "-1"
+      security_groups  = [
         
-    #     #"${aws_security_group.sgk8s-bruno-haproxy.id}"
-    #     "sg-06e480c4d10ae4e2a"
-    #   ]
-    #   self             = false
-    #   to_port          = 0
-    # },
+        #"${aws_security_group.sgk8s-bruno-haproxy.id}"
+        "sg-0b5991442b7e315ac"
+      ]
+      self             = false
+      to_port          = 0
+    },
+    {
+      cidr_blocks      = []
+      description      = ""
+      from_port        = 0
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "tcp"
+      security_groups  = []
+      self             = true
+      to_port          = 65535
+    },
     
   ]
 

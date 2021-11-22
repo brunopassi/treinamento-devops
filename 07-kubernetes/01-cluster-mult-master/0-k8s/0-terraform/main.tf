@@ -89,7 +89,7 @@ resource "aws_instance" "k8s_proxy" {
   }
 
   tags = {
-    Name = "ec2b-bruno-tf-haproxy"
+    Name = "k8s-bruno-haproxy"
   }
   vpc_security_group_ids = [aws_security_group.sgk8s-bruno-haproxy.id]
 }
@@ -115,7 +115,8 @@ resource "aws_instance" "k8s_masters" {
     volume_size = 40
   }
   tags = {
-    Name = "k8s_masters-${count.index}"
+  #  Name = "k8s_masters-${count.index}"
+    Name = "k8s-bruno-masters-${count.index}"
   }
 }
 
@@ -141,7 +142,8 @@ resource "aws_instance" "k8s_workers" {
   }
   tags = {
    #Name = "ec2b-bruno-tf-master"
-   Name = "k8s_workers-${count.index}"
+   #Name = "k8s_workers-${count.index}"
+   Name = "k8s-bruno-workers-${count.index}"
   }
 }
 

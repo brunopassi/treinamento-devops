@@ -1,18 +1,18 @@
 
 [ec2-k8s-proxy]
-ec2-18-231-179-62.sa-east-1.compute.amazonaws.com
+ec2-18-230-151-5.sa-east-1.compute.amazonaws.com
 
 [ec2-k8s-m1]
-ec2-18-228-192-99.sa-east-1.compute.amazonaws.com
+ec2-18-230-130-82.sa-east-1.compute.amazonaws.com
 [ec2-k8s-m2]
-ec2-54-232-142-39.sa-east-1.compute.amazonaws.com
+ec2-54-232-167-233.sa-east-1.compute.amazonaws.com
 [ec2-k8s-m3]
-ec2-18-228-118-237.sa-east-1.compute.amazonaws.com
+ec2-18-231-116-46.sa-east-1.compute.amazonaws.com
 
 [ec2-k8s-w1]
-ec2-15-228-74-232.sa-east-1.compute.amazonaws.com
+ec2-18-228-205-82.sa-east-1.compute.amazonaws.com
 [ec2-k8s-w2]
-ec2-18-231-64-113.sa-east-1.compute.amazonaws.com
+ec2-15-228-9-177.sa-east-1.compute.amazonaws.com
 [ec2-k8s-w3]
-ec2-15-228-45-77.sa-east-1.compute.amazonaws.com
+ec2-18-228-119-79.sa-east-1.compute.amazonaws.com
 
